@@ -7,12 +7,24 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 
-if test $SUDO_USER -gt 0; then
+if [ -z "$SUDO_USER" ]; then
     eval wine_prefix_path=~$USER/.sapi5
     curr_user=$USER
+    echo "Root here"
 else
     eval wine_prefix_path=~$SUDO_USER/.sapi5
     curr_user=$SUDO_USER
+    echo "SUDO here"
+fi
+
+dir_exists_default_message="The directory $wine_prefix_path already exists, meaning that an installation was previously attempted. Wanna delete this directory and redo the installation? (Y/N)"
+dir_second_confirmation="ATTENTION! The directory $wine_prefix_path will be permanently erased so the script can attempt a new installation. Are you sure you want to continue? (Y/N)"
+
+if [[ -d "$wine_prefix_path" ]]; then
+    read -p "$dir_exists_default_message" confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+    read -p "$dir_second_confirmation" confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+    
+    rm -rf $wine_prefix_path
 fi
 
 mkdir $wine_prefix_path
