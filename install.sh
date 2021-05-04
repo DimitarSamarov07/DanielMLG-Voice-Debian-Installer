@@ -17,12 +17,12 @@ else
     echo "SUDO here"
 fi
 
-dir_exists_default_message="The directory $wine_prefix_path already exists, meaning that an installation was previously attempted. Wanna delete this directory and redo the installation? (Y/N)"
-dir_second_confirmation="ATTENTION! The directory $wine_prefix_path will be permanently erased so the script can attempt a new installation. Are you sure you want to continue? (Y/N)"
+dir_exists_msg="The directory $wine_prefix_path already exists, meaning that an installation was previously attempted. Wanna delete this directory and redo the installation? (Y/N)"
+dir_final_confirm="ATTENTION! The directory $wine_prefix_path will be permanently erased so the script can attempt a new installation. Are you sure you want to continue? (Y/N)"
 
 if [[ -d "$wine_prefix_path" ]]; then
-    read -p "$dir_exists_default_message" confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
-    read -p "$dir_second_confirmation" confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+    read -p "$dir_exists_msg" confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
+    read -p "$dir_final_confirm" confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1
     
     rm -rf $wine_prefix_path
 fi
