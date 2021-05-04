@@ -10,11 +10,9 @@ fi
 if [ -z "$SUDO_USER" ]; then
     eval wine_prefix_path=~$USER/.sapi5
     curr_user=$USER
-    echo "Root here"
 else
     eval wine_prefix_path=~$SUDO_USER/.sapi5
     curr_user=$SUDO_USER
-    echo "SUDO here"
 fi
 
 dir_exists_msg="The directory $wine_prefix_path already exists, meaning that an installation was previously attempted. Wanna delete this directory and redo the installation? (Y/N)"
