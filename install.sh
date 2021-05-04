@@ -2,17 +2,17 @@
 
 # Check if user has root privileges
 if [[ $EUID -ne 0 ]]; then
-echo "You must run the script as root or using sudo"
-   exit 1
+    echo "You must run the script as root or using sudo"
+    exit 1
 fi
 
 
 if test $SUDO_USER -gt 0; then
-eval wine_prefix_path=~$USER/.sapi5
-curr_user=$USER
+    eval wine_prefix_path=~$USER/.sapi5
+    curr_user=$USER
 else
-eval wine_prefix_path=~$SUDO_USER/.sapi5
-curr_user=$SUDO_USER
+    eval wine_prefix_path=~$SUDO_USER/.sapi5
+    curr_user=$SUDO_USER
 fi
 
 mkdir $wine_prefix_path
@@ -64,7 +64,7 @@ do_wine_magic(){
     create_wine_prefix
     move_files_to_prefix_and_change_dir
     run_installation_files
-    change_wine_owner  
+    change_wine_owner
 }
 
 install_requires
