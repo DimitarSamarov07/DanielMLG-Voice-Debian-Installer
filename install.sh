@@ -45,7 +45,7 @@ install_requires(){
 }
 
 get_installation_files(){
-    wget -O Daniel_MLG.exe https://archive.org/download/DanielMLGEnglishVoiceForBalabolka90mb/Daniel%20MLG%20english%20voice%20for%20balabolka%2090mb.exe
+    wget -O Daniel_MLG.exe https://archive.org/download/daniel-22-khz-mlg-voice/Daniel%2022Khz%20MLG%20voice.exe
     wget -O balcon.zip http://www.cross-plus-a.com/balcon.zip
     echo "Unzipping..."
     unzip -q balcon.zip -d ./balcon
