@@ -35,7 +35,7 @@ create_and_enter_tmp_directory(){
 install_apt_requires(){
     dpkg --add-architecture i386
     apt update
-    apt install -y --reinstall wine64 wine32 wine-development winetricks wget unzip
+    apt install -y --reinstall wine64 wine32 winetricks wget unzip
 }
 
 install_requires(){
